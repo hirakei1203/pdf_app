@@ -122,5 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/login'
-LOGIN_RECENT_URL = 'pdfmr/top'
+LOGIN_REDIRECT_URL = '/pdfmr/top'
 LOGOUT_REDIRECT_URL = '/login'
