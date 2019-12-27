@@ -61,13 +61,16 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+      
       <li>
-            <a class="nav-link">ユーザ名：</a>
+            <a class="nav-link">ユーザ名：{{ user.get_username }}</a>
         </li>     
         <li>
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{% url 'accounts:logout' %}">
                 <i class="fa fa-fw fa-sign-out"></i>ログアウト</a>
         </li>
+      {% endif %}
     </ul>
   </nav>
   <!-- /.navbar -->
