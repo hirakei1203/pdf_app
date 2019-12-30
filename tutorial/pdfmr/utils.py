@@ -1,7 +1,7 @@
-from pdfminer.pdffinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
-from pdfminer.pdfpage import bPDFPage
+from pdfminer.pdfpage import PDFPage
 from io import StringIO
 from glob import glob
 from django.conf import settings
@@ -14,7 +14,7 @@ import time
 
 def convert_pdf_to_txt(path):
     
-    rsrcmgr = PDFResourceManapipger()
+    rsrcmgr = PDFResourceManager()
     retstr = StringIO()
     codec = 'utf-8'
     laparams = LAParams()
