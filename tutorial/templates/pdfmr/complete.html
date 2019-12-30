@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends '../base.html' %}
 {% block content %}
 
 <div class="content-wrapper">
@@ -23,9 +23,9 @@
         <div class="card-body">
           {% if message %}
           <div class="callout callout-info">
-              {{message}}
+          {{ message }}
           </div>
-              {% endif %}
+          {% endif %}
          </div>
         <hr>
         <div class="text-center">
