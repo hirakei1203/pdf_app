@@ -1,3 +1,4 @@
+from .custmize import merge_excel
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -50,4 +51,5 @@ def create_excel(upload_dir, user_name):
         result_txt = convert_pdf_to_txt(pdf)
         result_list.append(result_txt)
         
+    merge_excel(book, result_list, work_file)
     shutil.move(work_file, user_dir)

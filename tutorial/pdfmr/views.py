@@ -4,6 +4,7 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from .forms import UploadForm
+from .utils import create_excel
 from django.core.files.storage import default_storage
 import shutil, os
 
@@ -23,7 +24,7 @@ class UploadView(LoginRequiredMixin, generic.FormView):
         if not os.path.isdir(user_dir):  #ユーザディレクトリの作成
             os.makedirs(user_dir)
         temp_dir = form.save()  # upload一時フォルダの取得
-        # pdf -> PDF⇒excel変換処理の実行（あとで実装）
+        create_excel(temp_dir, user_name)
         shutil.rmtree(temp_dir)  #upload一時フォルダの削除
         _, file_list = default_storage.listdir(os.path.join(settings.MEDIA_ROOT, "excel", user_name))
         message = "正常終了しました。"
