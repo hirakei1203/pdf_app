@@ -34,3 +34,20 @@ def convert_pdf_to_txt(path):
     device.close()
     retstr.close()
     return fstr
+    
+def create_excel(upload_dir, user_name):
+    upload_path = os.path.join(upload_dir, "*.pdf")
+    template_file = os.path.join(settings.MEDIA_ROOT, "template", "請求書一覧ファイル.xlsx")
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    work_life = os.path.join(settings.MEDIA_ROOT, "temp", "請求書一覧ファイル_" + timestr + ".xlsx")
+    user_dir = os.path.join(settings.MEDIA_ROOT, "excel", user_name)
+    file_list = glob(upload_path)
+    shutil.copyfile(template_file, work_file)
+    book 0 openpyxl.load_workbook(work_file)
+    
+    result_list = []
+    for pdf in file_list:
+        result_txt = convert_pdf_to_txt(pdf)
+        result_list.append(result_txt)
+        
+    shutil.move(work_file, user_dir)
