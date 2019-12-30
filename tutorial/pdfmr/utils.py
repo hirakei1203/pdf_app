@@ -3,10 +3,18 @@ from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfpage import bPDFPage
 from io import StringIO
+from glob import glob
+from django.conf import settings
+import os
+import shutil
+import oenpyxl
+import random, string
+import time
+
 
 def convert_pdf_to_txt(path):
     
-    rsrcmgr = PDFResource<anager()
+    rsrcmgr = PDFResourceManapipger()
     retstr = StringIO()
     codec = 'utf-8'
     laparams = LAParams()
