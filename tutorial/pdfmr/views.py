@@ -39,7 +39,7 @@ class UploadView(LoginRequiredMixin, generic.FormView):
     def form_invalid(self, form):
         return render(self.request, 'pdfmr/upload_form.html', {'form': form})
         
-class ListView(LoginRequiredMixin, generic, TemplateView):
+class ListView(LoginRequiredMixin, generic.TemplateView):
     
     template_name = 'pdfmr/list.html'
     
