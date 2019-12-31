@@ -24,9 +24,9 @@
             <div class="card-body">
               <hr>
               <form action='{% url 'pdfmr:dell_file' %}' name="form" method="post">
-                {% csrf token %}
+                {% csrf_token %}
                 <label>
-                  <input type="checkbox" name="all" onClick="AllChecked();"/>
+                  <input type="checkbox" name="all" onClick="AllChecked();"/>全て選択
                 </label><br>
               {% for file in file_list %}
               <label>
@@ -35,7 +35,7 @@
               </label>
              <br>
              {% endfor %}
-                             
+              <input type="submit" id="button" name="button"  class="btn btn-sm btn-danger" value="削除">
               </form>
               {% if warning_message %}
               <hr>

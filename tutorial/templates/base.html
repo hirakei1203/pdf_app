@@ -164,4 +164,32 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{% static "AdminLTE-3.0.1/dist/js/demo.js" %}"></script>
 </body>
+
+<script language="JavaScript" type="text/javascript">
+// 「全て選択」チェックで全てにチェック付く
+   function AllChecked(){
+     var all = document.form.all.checked;
+     for (var i=0; i<document.form.checks.length; i++){
+       document.form.checks[i].checked = all;
+       }
+       }
+    // 一つでもチェックを外すと「全て選択」のチェック外れる
+    function　DisChecked(){
+      var checks = document.form.checks;
+      var checksCount = 0;
+      for (var i=0; i<checks.length; i++){
+        if(checks[i].checked == false){
+          document.form.all.checked = false;
+        }else{
+          checksCount += 1;
+          if(checksCount == checks.length){
+            document.form.all.checked = true;
+          }
+        }
+      }
+    }
+</script>
+
+
+
 </html>
