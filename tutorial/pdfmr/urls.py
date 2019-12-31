@@ -7,4 +7,5 @@ app_name ="pdfmr"
 urlpatterns = [
     path('top/', views.top, name='top'),      
     path('upload/', views.UploadView.as_view(), name='upload'),
+    pasth('list/', views.ListView.as_view(), name='list'),
 ]
