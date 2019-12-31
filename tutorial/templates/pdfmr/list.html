@@ -23,13 +23,27 @@
           <div class="box-body">
             <div class="card-body">
               <hr>
+              <form action='{% url 'pdfmr:dell_file' %}' name="form" method="post">
+                {% csrf token %}
+                <label>
+                  <input type="checkbox" name="all" onClick="AllChecked();"/>
+                </label><br>
               {% for file in file_list %}
               <label>
-                  <input type="checkbox" name="checks" value="{{file}}"/>
+                  <input type="checkbox" name="checks" value="{{file}}" onClick="DisChecked();"/>
                   <a href="https://ea85835e4451491f9a9c275b57d91ec0.vfs.cloud9.ap-northeast-1.amazonaws.com/media/excel/{{login_user_name}}/{{file}}">{{file}}</a>
               </label>
              <br>
              {% endfor %}
+                             
+              </form>
+              {% if warning_message %}
+              <hr>
+              <div clas="alert alert-warning alert-desmissible" role="alert">
+                <p>{{warning_message}}</p>
+              </div>
+              {% endif %}
+              <hr>
               <div class="text-center">
                 <a href="{% url 'pdfmr:top' %}" class="btn btn-primary btn-sm" role="button">戻る</a>
               </div>
