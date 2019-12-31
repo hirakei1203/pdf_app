@@ -2,6 +2,7 @@ from django import forms
 from django.conf import settings
 from django.core.files.storage import default_storage
 import os, random, string
+from upload_validator import FileTypeValidator  #追加
 
 class UploadForm(forms.Form):
     """PDFアップロード用フォームの定義
@@ -9,6 +10,7 @@ class UploadForm(forms.Form):
     """
     document = forms.FileField(label="PDFアップロード",
         widget=forms.ClearableFileInput(attrs={'multiple': True}),
+        validators=[FileTypeValidator(allowed_types=[ 'application/pdf'])]
         )
         
     def save(self):
@@ -21,3 +23,5 @@ class UploadForm(forms.Form):
     def create_dir(self, n):
         """一時フォルダ名生成関数"""
         return 'pdf\\' + ''.join(random.choices(string.ascii_letters + string.digits, k=n))
+        
+        

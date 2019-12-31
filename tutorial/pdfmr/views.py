@@ -47,6 +47,14 @@ class ListView(LoginRequiredMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         login_user_name = self.request.user.username
+        
+        if not default_storage.exists(os.path.join(settings.MEDIA_ROOT, "excel", login_user_name)):
+            warning_message = "このユーザでは一度もファイル作成が行われていません。"
+            context = {
+            'warning_message':warning_message,
+            }
+        return context
+        
         file_list = default_storage.listdir(os.path.join(settings.MEDIA_ROOT, "excel", login_user_name))[1]
         context = {
             'file_list' : file_list,
