@@ -40,7 +40,9 @@ def merge_excel(book, result_list, temp_file):
             cell_bikou = 'D22'
             cell_price = 'N28'
             
-            sheet[cell]
+            sheet[cell_hosoku] = cell_hosoku
+            sheet[cell_bikou] = cell_bikou
+            sheet[cell_price] = cell_price
             
         
     except Exception as e:
