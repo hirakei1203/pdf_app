@@ -46,21 +46,20 @@ def merge_excel(book, result_list, temp_file):
                     sheet = book['SAP処理依頼書 Copy3']
             
             allText = result_list[i].split("\n")
+            length = len(allText)
             year = dt_now.year
             month = dt_now.month
             day = dt_now.day
-            # if length < x: 
             hosoku = allText[22]
-            bikou = allText[45] + ", " + allText[46] + ", " + allText[47] + ", " + allText[48]
-            allText.reverse()
-            price = allText[2]
-            # else 
-            # hosoku = allText[22]
-            # bikou = allText[45] + ", " + allText[46] + ", " + allText[47] + ", " + allText[48]
-            # allText.reverse()
-            # price = allText[2]
-            # endif
-            
+            if length > 86: 
+                bikou = allText[45] + ", " + allText[46] + ", " + allText[47] + ", " + allText[48]
+                allText.reverse()
+                price = allText[2]
+            else: 
+                bikou = allText[45] + ", " + allText[46]
+                allText.reverse()
+                price = allText[2]
+
             cell_hosoku = 'D20'
             cell_bikou = 'D22'
             cell_price = 'N28'
