@@ -31,6 +31,18 @@ def merge_excel(book, result_list, temp_file):
         sheet = book['SAP処理依頼書']
         # 複数のpdfファイルの際にsheetを複製していくコードが課題
         for i in range(len(result_list)):
+            if i >= 1:
+                ws = book.worksheets[0]
+                book.copy_worksheet(ws)
+                if i == 1:
+                    sheet = book['SAP処理依頼書 Copy']
+                elif i == 2:
+                    sheet = book['SAP処理依頼書 Copy1']
+                elif i == 3:
+                    sheet = book['SAP処理依頼書 Copy2']
+                elif i == 4:
+                    sheet = book['SAP処理依頼書 Copy3']
+            
             allText = result_list[i].split("\n")
             # if length < x: 
             hosoku = allText[22]
@@ -52,12 +64,18 @@ def merge_excel(book, result_list, temp_file):
             sheet[cell_bikou] = bikou
             sheet[cell_price] = price
             
+            
+            
+            # elif  i == 1:
+                
+            # elif  i == 2:
+            #     sheet = book['SAP処理依頼書 Copy2']
+            # elif  i == 3:
+            #     sheet = book['SAP処理依頼書 Copy3']
+            
             book.save(temp_file)
             
-            next_sheet_number = i + 1
-            next_sheet = "SAP処理依頼書" + "next_sheet"
-            ws = book.create_sheet(title=next_sheet)
-            sheet = book[ws]
+
             
     except Exception as e:
             err_message ="Excelファイルへのデータ転記処理でエラーが発生しました。<br>\
