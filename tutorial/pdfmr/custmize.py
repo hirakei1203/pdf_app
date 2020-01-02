@@ -54,6 +54,11 @@ def merge_excel(book, result_list, temp_file):
             
             book.save(temp_file)
             
+            next_sheet_number = i + 1
+            next_sheet = "SAP処理依頼書" + "next_sheet"
+            ws = book.create_sheet(title=next_sheet)
+            sheet = book[ws]
+            
     except Exception as e:
             err_message ="Excelファイルへのデータ転記処理でエラーが発生しました。<br>\
             アップロードしたPDFファイルが正しいフォーマットか確認してください。<br>\

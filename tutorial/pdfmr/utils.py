@@ -42,7 +42,7 @@ def create_excel(upload_dir, user_name):
     # template_file = os.path.join(settings.MEDIA_ROOT, "template", "請求書一覧ファイル.xlsx")
     # timestr = time.strftime("%Y%m%d-%H%M%S")
     # work_file = os.path.join(settings.MEDIA_ROOT, "temp", "請求書一覧ファイル_" + timestr + ".xlsx")
-    # D社用コード
+    # D社用コードーーーーーーーーーーーーーー-
     template_file = os.path.join(settings.MEDIA_ROOT, "template", "振込用紙_空.xlsx")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     work_file = os.path.join(settings.MEDIA_ROOT, "temp", "振込用紙_空_" + timestr + ".xlsx")
