@@ -32,10 +32,17 @@ def merge_excel(book, result_list, temp_file):
         # 複数のpdfファイルの際にsheetを複製していくコードが課題
         for i in range(len(result_list)):
             allText = result_list[i].split("\n")
+            # if length < x: 
             hosoku = allText[22]
             bikou = allText[45] + ", " + allText[46] + ", " + allText[47] + ", " + allText[48]
             allText.reverse()
             price = allText[2]
+            # else 
+            # hosoku = allText[22]
+            # bikou = allText[45] + ", " + allText[46] + ", " + allText[47] + ", " + allText[48]
+            # allText.reverse()
+            # price = allText[2]
+            # endif
             
             cell_hosoku = 'D20'
             cell_bikou = 'D22'
