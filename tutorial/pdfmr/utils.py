@@ -38,9 +38,14 @@ def convert_pdf_to_txt(path):
     
 def create_excel(upload_dir, user_name):
     upload_path = os.path.join(upload_dir, "*.pdf")
-    template_file = os.path.join(settings.MEDIA_ROOT, "template", "請求書一覧ファイル.xlsx")
+    # 元コード
+    # template_file = os.path.join(settings.MEDIA_ROOT, "template", "請求書一覧ファイル.xlsx")
+    # timestr = time.strftime("%Y%m%d-%H%M%S")
+    # work_file = os.path.join(settings.MEDIA_ROOT, "temp", "請求書一覧ファイル_" + timestr + ".xlsx")
+    # D社用コード
+    template_file = os.path.join(settings.MEDIA_ROOT, "template", "振込用紙_空.xlsx")
     timestr = time.strftime("%Y%m%d-%H%M%S")
-    work_file = os.path.join(settings.MEDIA_ROOT, "temp", "請求書一覧ファイル_" + timestr + ".xlsx")
+    work_file = os.path.join(settings.MEDIA_ROOT, "temp", "振込用紙_空_" + timestr + ".xlsx")
     user_dir = os.path.join(settings.MEDIA_ROOT, "excel", user_name)
     file_list = glob(upload_path)
     shutil.copyfile(template_file, work_file)
