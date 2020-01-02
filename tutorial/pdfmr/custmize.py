@@ -1,4 +1,5 @@
 import openpyxl
+import datetime
 
 def merge_excel(book, result_list, temp_file):
     # try:
@@ -29,6 +30,7 @@ def merge_excel(book, result_list, temp_file):
     # D社version
     try: 
         sheet = book['SAP処理依頼書']
+        dt_now = datetime.datetime.now()
         # 複数のpdfファイルの際にsheetを複製していくコードが課題
         for i in range(len(result_list)):
             if i >= 1:
@@ -44,6 +46,9 @@ def merge_excel(book, result_list, temp_file):
                     sheet = book['SAP処理依頼書 Copy3']
             
             allText = result_list[i].split("\n")
+            year = dt_now.year
+            month = dt_now.month
+            day = dt_now.day
             # if length < x: 
             hosoku = allText[22]
             bikou = allText[45] + ", " + allText[46] + ", " + allText[47] + ", " + allText[48]
@@ -59,12 +64,18 @@ def merge_excel(book, result_list, temp_file):
             cell_hosoku = 'D20'
             cell_bikou = 'D22'
             cell_price = 'N28'
+            cell_total_price = 'N41'
+            cell_year = 'N1'
+            cell_month = 'P1'
+            cell_day = 'R1'
             
             sheet[cell_hosoku] = hosoku
             sheet[cell_bikou] = bikou
             sheet[cell_price] = price
-            
-            
+            sheet[cell_total_price] = price
+            sheet[cell_year] = year
+            sheet[cell_month] = month
+            sheet[cell_day] = day
             
             # elif  i == 1:
                 
