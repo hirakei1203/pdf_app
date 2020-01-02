@@ -46,6 +46,7 @@ def create_excel(upload_dir, user_name):
     template_file = os.path.join(settings.MEDIA_ROOT, "template", "振込用紙_空.xlsx")
     timestr = time.strftime("%Y%m%d-%H%M%S")
     work_file = os.path.join(settings.MEDIA_ROOT, "temp", "振込用紙_空_" + timestr + ".xlsx")
+    # ーーーーーーーここまでーーーーーーーーー
     user_dir = os.path.join(settings.MEDIA_ROOT, "excel", user_name)
     file_list = glob(upload_path)
     shutil.copyfile(template_file, work_file)
