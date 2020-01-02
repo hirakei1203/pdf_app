@@ -31,20 +31,19 @@ def merge_excel(book, result_list, temp_file):
         sheet = book['SAP処理依頼書']
         # 複数のpdfファイルの際にsheetを複製していくコードが課題
         for i in range(len(result_list)):
-            allText = result_list[i].split("\n\n")
+            allText = result_list[i].split("\n")
             hosoku = allText[22]
             bikou = allText[45] + ", " + allText[46] + ", " + allText[47] + ", " + allText[48]
             allText.reverse()
             price = allText[2]
-            # allText.reverse()　配列が逆になるよ！for price
             
             cell_hosoku = 'D20'
             cell_bikou = 'D22'
             cell_price = 'N28'
             
-            sheet[cell_hosoku] = cell_hosoku
-            sheet[cell_bikou] = cell_bikou
-            sheet[cell_price] = cell_price
+            sheet[cell_hosoku] = hosoku
+            sheet[cell_bikou] = bikou
+            sheet[cell_price] = price
             
             book.save(temp_file)
             
